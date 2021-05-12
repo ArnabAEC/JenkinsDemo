@@ -4,7 +4,7 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "mvn38"
-	jdk   "jdk18"
+		jdk   "jdk18"
     }
 
     stages {
@@ -17,8 +17,8 @@ pipeline {
                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-           }
-         stage('Compile') {
+        }
+        stage('Compile') {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://bitbucket.org/java_kumar_arun/jenkinspipelinedemo'
@@ -27,8 +27,8 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true clean compile"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean compile"
             }
-	}
-         stage('Test') {
+		}
+        stage('Test') {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://bitbucket.org/java_kumar_arun/jenkinspipelinedemo'
@@ -37,8 +37,8 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true clean test"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean install"
             }
-	}
-	         stage('Package') {
+		}
+	    stage('Package') {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://bitbucket.org/java_kumar_arun/jenkinspipelinedemo'
@@ -47,9 +47,9 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean install"
             }	
-	}
+		}
 
-      }
+ 	}
 
             post {
                 // If Maven was able to run the tests, even if some of the test
@@ -61,4 +61,4 @@ pipeline {
                 }
         }
     }
-}
+
