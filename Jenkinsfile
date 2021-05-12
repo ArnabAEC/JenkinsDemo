@@ -17,8 +17,8 @@ pipeline {
                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-        }
-        stage('Compile') {
+           }
+         stage('Compile') {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://bitbucket.org/java_kumar_arun/jenkinspipelinedemo'
@@ -27,8 +27,8 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true clean compile"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean compile"
             }
-		}
-    	stage('Test') {
+	}
+         stage('Test') {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://bitbucket.org/java_kumar_arun/jenkinspipelinedemo'
@@ -37,8 +37,8 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true clean test"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean install"
             }
-		}
-		stage('Package') {
+	}
+	         stage('Package') {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://bitbucket.org/java_kumar_arun/jenkinspipelinedemo'
@@ -47,17 +47,18 @@ pipeline {
                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 // bat "mvn -Dmaven.test.failure.ignore=true clean install"
             }	
-		}
+	}
 
-    }
+      }
 
-            post{
+            post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'mail bcc: '', body: 'Just a mail from jenkins', cc: '', from: '', replyTo: '', subject: '', to: 'anysome3@gmail.com'
+                    archiveArtifacts 'target/*.jar'
+		//mail bcc: '', body: 'Just a mail from jenkins', cc: '', from: '', replyTo: '', subject: '', to: 'anysome3@gmail.com'
                 }
         }
     }
-
+}
